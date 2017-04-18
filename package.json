@@ -1,0 +1,23 @@
+{
+    "name": "js-apps-team-blueberry",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tdochev/JSApps-Team-Blueberry.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/tdochev/JSApps-Team-Blueberry/issues"
+    },
+    "homepage": "https://github.com/tdochev/JSApps-Team-Blueberry#readme",
+    "dependencies": {
+        "express": "^4.15.2"
+    }
+}
