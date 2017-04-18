@@ -1,0 +1,22 @@
+{
+  "name": "js-apps-team-blueberry",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Tsvetomir Dochev <tddochev@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/tdochev/JSApps-Team-Blueberry",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}
