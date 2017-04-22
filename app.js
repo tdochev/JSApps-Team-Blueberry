@@ -13,7 +13,7 @@ const port = process.env.PORT || 3001;
 
 app.get('/api/users', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify(db.getAllUsers()));
+    res.send(JSON.stringify(db.getAllUsers));
 });
 
 app.post('/api/users', (req, res) => {
@@ -35,4 +35,4 @@ app.post('/api/users', (req, res) => {
 });
 
 
-app.listen(port, () => console.log('Magic happens at port' + port));
+app.listen(port, () => console.log('Magic happens at port ' + port));
