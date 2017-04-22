@@ -21,7 +21,7 @@ app.get('/api/users', function(req, res) {
             console.log('Connected to MLab!');
         }
         db.collection('users').find({}).toArray(function(err, docs) {
-            //res.setHeader('Content-Type', 'application/json');
+            res.setHeader('Content-Type', 'application/json');
             res.send(JSON.stringify(docs));
             db.close();
         });
