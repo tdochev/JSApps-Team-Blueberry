@@ -16,7 +16,7 @@ app.get('/api/users', (req, res) => {
     res.send(JSON.stringify(db.getAllUsers()));
 });
 
-app.get('/api/users', (req, res) => {
+app.post('/api/users', (req, res) => {
     let user = req.body;
     if (!user || typeof user.username !== 'string') {
         res.status(400)
