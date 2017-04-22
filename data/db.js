@@ -17,7 +17,17 @@ module.exports = function() {
         });
     }
 
+    function addUser(user) {
+        MongoClient.connect(dbURI, (err, db) => {
+            if (err) {
+                console.log(err.message);
+            }
+            db.collection('users').insert(user);
+        });
+    }
+
     return {
         getAllUsers: getAllUsers,
+        addUser: addUser
     };
 };
