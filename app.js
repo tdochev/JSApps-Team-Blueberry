@@ -2,32 +2,17 @@
 'use strict';
 
 let express = require('express');
-let MongoClient = require('mongodb').MongoClient;
+let db = require('./data/db');
 
 let app = express();
-
 app.use(express.static('public'));
 
 const port = process.env.PORT || 3001;
-const dbURI = process.env.MONGODB.toString();
-
-// Connect to the db
 
 
-
-app.get('/api/users', function(req, res) {
-    MongoClient.connect(dbURI, function(err, db) {
-        if (!err) {
-            console.log('Connected to MLab!');
-        }
-        db.collection('users').find({}).toArray(function(err, docs) {
-            res.setHeader('Content-Type', 'application/json');
-            res.send(JSON.stringify(docs));
-            db.close();
-        });
-    });
+app.get('/api/users', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(db.getAllUsers()));
 });
-
-
 
 app.listen(port, () => console.log('Magic happens at port' + port));
