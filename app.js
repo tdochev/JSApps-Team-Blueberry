@@ -20,8 +20,8 @@ app.get('/api/users', function(req, res) {
         if (!err) {
             console.log('Connected to MLab!');
         }
-        let temp = db.collection('users').find({}).toArray(function(err, docs) {
-            res.setHeader('Content-Type', 'application/json');
+        db.collection('users').find({}).toArray(function(err, docs) {
+            //res.setHeader('Content-Type', 'application/json');
             res.send(JSON.stringify(docs));
             db.close();
         });
