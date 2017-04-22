@@ -9,14 +9,14 @@ let app = express();
 app.use(express.static('public'));
 
 const port = process.env.PORT || 3001;
-const dbURI = process.env.MONGODB || '';
+const dbURI = process.env.MONGODB.toString();
 
 // Connect to the db
 
 
 
 app.get('/api/users', function(req, res) {
-    MongoClient.connect('dbURI', function(err, db) {
+    MongoClient.connect(dbURI, function(err, db) {
         if (!err) {
             console.log('Connected to MLab!');
         }
