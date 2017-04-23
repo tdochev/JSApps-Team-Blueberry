@@ -1,33 +1,33 @@
-/* globals module, require, process, console */
+/* globals module, require, process, Promise */
 module.exports = function() {
     'use strict';
 
     let MongoClient = require('mongodb').MongoClient;
-    const dbURI = process.env.MONGODB.toString() || 'Your local mongoDB URI';
+    const dbURI = process.env.MONGODB || 'mongodb://127.0.0.1:27017/test';
 
     function getAllUsers() {
-        MongoClient.connect(dbURI, (err, db) => {
-            if (err) {
-                console.log(err.message);
-            }
-            db.collection('users').find({}).toArray((err, rows) => {
-                db.close();
-                return rows;
+        return new Promise(function(resolve, reject) {
+            MongoClient.connect(dbURI.toString(), (err, db) => {
+                if (err) {
+                    reject(err.message);
+                } else {
+                    console.log('connected to DB!');
+                    resolve(db);
+                }
+            });
+        }).then(db => {
+            return new Promise(function(resolve, reject) {
+                db.collection('users').find({}).toArray((error, rows) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(rows);
+                    }
+                });
             });
         });
     }
-
-    function addUser(user) {
-        MongoClient.connect(dbURI, (err, db) => {
-            if (err) {
-                console.log(err.message);
-            }
-            db.collection('users').insert(user);
-        });
-    }
-
     return {
         getAllUsers: getAllUsers,
-        addUser: addUser
     };
 };
