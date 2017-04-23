@@ -13,7 +13,6 @@ const port = process.env.PORT || 3001;
 
 app.get('/api/users', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
-    console.log(data.getAllUsers());
     data.getAllUsers().then(value => {
         res.send(JSON.stringify(value));
     }).catch(err => {
