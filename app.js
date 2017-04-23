@@ -8,6 +8,7 @@ let bodyParser = require('body-parser');
 
 let app = express();
 app.use(express.static('public'));
+app.use(bodyParser.json());
 
 const port = process.env.PORT || 3001;
 
@@ -20,24 +21,22 @@ app.get('/api/users', (req, res) => {
     });
 });
 
-// app.post('/api/users', (req, res) => {
-//     let user = req.body;
-//     console.log(user);
-//     if (!user || typeof user.username !== 'string') {
-//         res.status(400)
-//             .json('Invalid user');
-//         return;
-//     }
-
-//     user.usernameToLower = user.username.toLowerCase();
-//     db.addUser(user);
-//     res.status(201)
-//         .json({
-//             result: {
-//                 username: user.username
-//             }
-//         });
-// });
+app.post('/api/users', (req, res) => {
+    let user = req.body;
+    if (!user || typeof user.username !== 'string') {
+        res.status(400)
+            .json('Invalid user');
+        return;
+    }
+    data.addUser(user).then(() => {
+        res.status(201)
+            .json({
+                result: {
+                    username: user.username
+                }
+            });
+    });
+});
 
 
 app.listen(port, () => console.log('Magic happens at port ' + port));

@@ -7,15 +7,7 @@ module.exports = function() {
 
     function getAllUsers() {
         return new Promise((resolve, reject) => {
-            MongoClient.connect(dbURI.toString(), (err, db) => {
-                if (err) {
-                    reject(err.message);
-                } else {
-                    resolve(db);
-                }
-            });
-        }).then(db => {
-            return new Promise((resolve, reject) => {
+            MongoClient.connect(dbURI.toString()).then(db => {
                 db.collection('users').find({}).toArray((error, rows) => {
                     if (error) {
                         reject(error);
@@ -28,7 +20,23 @@ module.exports = function() {
         });
     }
 
+    function addUser(user) {
+        return new Promise((resolve, reject) => {
+            MongoClient.connect(dbURI.toString()).then(db => {
+                db.collection('users').insert(user, (error, result) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        db.close();
+                        resolve(result);
+                    }
+                });
+            });
+        });
+    }
+
     return {
         getAllUsers: getAllUsers,
+        addUser: addUser
     };
 };
