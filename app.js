@@ -2,8 +2,8 @@
 'use strict';
 
 let express = require('express');
-let data = require('./data/db');
-let db = data();
+let db = require('./data/db');
+let data = db();
 let bodyParser = require('body-parser');
 
 let app = express();
@@ -12,9 +12,9 @@ app.use(express.static('public'));
 const port = process.env.PORT || 3001;
 
 app.get('/api/users', (req, res) => {
-
     res.setHeader('Content-Type', 'application/json');
-    db.getAllUsers().then(value => {
+    console.log(data.getAllUsers());
+    data.getAllUsers().then(value => {
         res.send(JSON.stringify(value));
     }).catch(err => {
         console.log(err);
