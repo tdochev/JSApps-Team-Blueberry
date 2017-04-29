@@ -29,14 +29,15 @@ module.exports = function() {
                     if (rows.length > 0) {
                         db.close();
                         reject('This user already exists');
-                    }
-                });
-                db.collection('users').insert(user, (error, result) => {
-                    if (error) {
-                        reject(error);
                     } else {
-                        db.close();
-                        resolve(result);
+                        db.collection('users').insert(user, (error, result) => {
+                            if (error) {
+                                reject(error);
+                            } else {
+                                db.close();
+                                resolve(result);
+                            }
+                        });
                     }
                 });
             });
