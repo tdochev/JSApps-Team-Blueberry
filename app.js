@@ -28,14 +28,20 @@ app.put('/api/users', (req, res) => {
             .json('Invalid user');
         return;
     }
-    data.addUser(user).then(() => {
-        res.status(201)
-            .json({
-                result: {
-                    username: user.username
-                }
-            });
-    });
+    data.addUser(user)
+        .then(() => {
+            res.status(201)
+                .json({
+                    result: {
+                        username: user.username
+                    }
+                });
+        }).catch((error) => {
+            res.status(400)
+                .json({
+                    result: error
+                });
+        });
 });
 
 

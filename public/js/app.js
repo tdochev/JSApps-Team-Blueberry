@@ -1,28 +1,5 @@
 /* globals $, CryptoJS, jsonRequester */
 
-
-const Validator = {
-    isNameCorrect: function(x) {
-        if (typeof x !== 'string') {
-            throw Error("Name should be a string");
-        }
-        if (x.length < 3) {
-            throw Error("Name should be at least 3 signs")
-        }
-    },
-
-    isPasswordCorrect: function(x) {
-        if (typeof x !== 'string') {
-            throw Error("Password should be a string");
-        }
-        if (x.length < 5) {
-            throw Error("Password should be at least 5 signs")
-        }
-    }
-};
-
-
-
 (function() {
     'use strict';
     var $registerBtn = $('#btn-register');
@@ -32,8 +9,8 @@ const Validator = {
         var password = $('#form-password').val();
         var passHash = CryptoJS.SHA1(username + password).toString();
 
-        Validator.isNameCorrect(username);
-        Validator.isPasswordCorrect(password);
+        validator.validateLen(username, 'username', 3);
+        validator.validateLen(password, 'password', 6);
 
         var reqUser = {
             username: username,
@@ -45,9 +22,13 @@ const Validator = {
             })
             .then(function(resp) {
                 var user = resp.result;
+                //move messages to a module
+                toastr.success(`User ${user.username} successfuly created.`);
                 return {
                     username: user.username
                 };
+            }).catch(function(reason) {
+                toastr.warning(reason.responseJSON.result);
             });
     });
 }());
