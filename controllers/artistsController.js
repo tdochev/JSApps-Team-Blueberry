@@ -32,7 +32,7 @@ class Artist {
 
 var output = [];
 var listOfArtistAsObject = {};
-class ArtistController {
+export default class ArtistController {
     constructor(listOfArtists) {
         this._listOfArtists = listOfArtists;
     }
