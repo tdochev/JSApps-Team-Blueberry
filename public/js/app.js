@@ -1,6 +1,6 @@
 /* globals $, CryptoJS, jsonRequester */
 
-
+// Just for Validation
 const Validator = {
     isNameCorrect: function(x) {
         if (typeof x !== 'string') {
