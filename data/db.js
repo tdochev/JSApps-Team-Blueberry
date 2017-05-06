@@ -44,12 +44,22 @@ module.exports = function() {
         });
     }
 
-    function registerUser(user) {
-
+    function getUserByUsername(username) {
+        return new Promise((resolve, reject) => {
+            MongoClient.connect(dbURI.toString()).then(db => {
+                db.collection('users').find({
+                    username: username
+                }).toArray((error, rows) => {
+                    resolve(rows[0]);
+                    reject(error);
+                });
+            });
+        });
     }
 
     return {
         getAllUsers: getAllUsers,
-        addUser: addUser
+        addUser: addUser,
+        getUserByUsername: getUserByUsername
     };
 };
