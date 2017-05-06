@@ -61,23 +61,22 @@ app.put('/api/users', (req, res) => {
         });
 });
 
-// app.post('/api/auth', (req, res) => {
-//     var reqUser = req.body;
-//     var user = db('users').find({
-//         usernameToLower: reqUser.username.toLowerCase()
-//     });
-//     if (!user || user.passHash !== reqUser.passHash) {
-//         res.status(404)
-//             .json('Invalid username or password');
-//         return;
-//     }
-
-//     res.json({
-//         result: {
-//             username: user.username,
-//             authKey: user.authKey
-//         }
-//     });
-// });
+app.post('/api/auth', (req, res) => {
+    var reqUser = req.body;
+    data.getUserByUsername(reqUser.username.toLowerCase()).then((data) => {
+        let user = data;
+        if (!user || user.passHash !== reqUser.passHash) {
+            res.status(404)
+                .json('Invalid username or password');
+            return;
+        }
+        res.json({
+            result: {
+                username: user.username,
+                authKey: user.authKey
+            }
+        });
+    });
+});
 
 app.listen(port, () => console.log('Magic happens at port ' + port));
