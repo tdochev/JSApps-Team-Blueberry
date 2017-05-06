@@ -1,14 +1,9 @@
 /* globals toastr*/
-var validator = (function() {
+import toastr from 'toastr';
+
+export function validateLen(x, nameOfValidateValue, len) {
     'use strict';
-
-    function validateLen(x, nameOfValidateValue, len) {
-        if (x.length < len) {
-            toastr.error(`${nameOfValidateValue} should be at least ${len} signs`);
-        }
+    if (x.length < len) {
+        toastr.error(`${nameOfValidateValue} should be at least ${len} signs`);
     }
-
-    return {
-        validateLen: validateLen,
-    };
-}());
+}

@@ -8,6 +8,7 @@ let bodyParser = require('body-parser');
 
 let app = express();
 app.use(express.static('public'));
+app.use('/libs', express.static('node_modules'));
 app.use(bodyParser.json());
 
 const port = process.env.PORT || 3001;
