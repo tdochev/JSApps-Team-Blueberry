@@ -44,6 +44,10 @@ module.exports = function() {
         });
     }
 
+    function registerUser(user) {
+
+    }
+
     return {
         getAllUsers: getAllUsers,
         addUser: addUser

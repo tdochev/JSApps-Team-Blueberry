@@ -4,8 +4,20 @@ import 'jquery';
 import 'bootstrap';
 import toastr from 'toastr';
 import CryptoJS from 'cryptojs';
+import Sammy from 'sammy';
 import * as validator from './utils/validator.js';
 import * as requester from './utils/requester.js';
+import HandlebarsTemplate from './utils/templates.js';
+
+var app = Sammy('#main', function() {
+
+    // define a 'route'
+    this.get('#/', function() {
+        console.log('home');
+    });
+});
+// start the application
+app.run('#/');
 
 var $registerBtn = $('#btn-register');
 $registerBtn.on('click', function() {

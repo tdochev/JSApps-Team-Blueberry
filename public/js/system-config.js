@@ -15,8 +15,8 @@ System.config({
         // Library files
         'jquery': 'libs/jquery/dist/jquery.min.js',
         'bootstrap': 'libs/bootstrap/dist/js/bootstrap.min.js',
-        //'sammy': 'libs/sammy/lib/min/sammy-latest.min.js',
-        //'handlebars': 'libs/handlebars/dist/handlebars.min.js',
+        'sammy': 'libs/sammy/lib/min/sammy-latest.min.js',
+        'handlebars': 'libs/handlebars/dist/handlebars.min.js',
         'cryptojs': 'libs/crypto-js/crypto-js.js',
         'toastr': 'libs/toastr/build/toastr.min.js'
     }
