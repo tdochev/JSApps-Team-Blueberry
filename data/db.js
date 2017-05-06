@@ -23,12 +23,21 @@ module.exports = function() {
     function addUser(user) {
         return new Promise((resolve, reject) => {
             MongoClient.connect(dbURI.toString()).then(db => {
-                db.collection('users').insert(user, (error, result) => {
-                    if (error) {
-                        reject(error);
-                    } else {
+                db.collection('users').find({
+                    username: user.username.toLowerCase()
+                }).toArray((error, rows) => {
+                    if (rows.length > 0) {
                         db.close();
-                        resolve(result);
+                        reject('This user already exists');
+                    } else {
+                        db.collection('users').insert(user, (error, result) => {
+                            if (error) {
+                                reject(error);
+                            } else {
+                                db.close();
+                                resolve(result);
+                            }
+                        });
                     }
                 });
             });
