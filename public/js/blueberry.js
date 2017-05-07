@@ -21,15 +21,7 @@ var app = Sammy(function() {
         console.log('main');
     });
 
-    this.get('#/logout', function() {
-        $('#btn-sign-in').removeClass('hidden');
-        $('#btn-register').removeClass('hidden');
-        $('#btn-logout').addClass('hidden');
-        localStorage.removeItem('user');
-        localStorage.removeItem('userAuthKey');
-        toastr.success('You have successfuly loged out.')
-        window.location = '#/';
-    });
+    this.get('#/logout', userController.userLogOut);
 
 
     this.get('#/signin', userController.userSignIn);

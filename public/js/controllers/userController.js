@@ -1,3 +1,4 @@
+/* globals $, toastr*/
 import HandlebarsTemplate from 'templates';
 import requester from 'requester';
 import CryptoJS from 'cryptojs';
@@ -43,4 +44,13 @@ export default class userController {
         });
     }
 
+    userLogOut() {
+        $('#btn-sign-in').removeClass('hidden');
+        $('#btn-register').removeClass('hidden');
+        $('#btn-logout').addClass('hidden');
+        localStorage.removeItem('user');
+        localStorage.removeItem('userAuthKey');
+        toastr.success('You have successfuly loged out.')
+        window.location = '#/';
+    }
 }
