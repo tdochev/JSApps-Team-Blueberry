@@ -23,6 +23,18 @@ var app = Sammy(function() {
 
     this.get('#/register', userController.userRegister);
 
+    this.get('#/artists', function() {
+        console.log('Artist controller should go here!');
+    });
+
+    this.get('#/albums', function() {
+        console.log('Albums controller should go here!');
+    });
+
+    this.get('#/songs', function() {
+        console.log('Songs controller should go here!');
+    });
+
 });
 
 // start the application
