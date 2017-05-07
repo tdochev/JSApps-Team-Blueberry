@@ -1,0 +1,10 @@
+   <div class="albumsOfSongs">
+            {{song.album}}
+            <div id="songsOfAlbum">
+                <li>
+                    {{SongList.song.isThisASingle}}
+                    {{each SongList.song}}
+                    <ul class="inThisAlbum">{{this}} Likes: {{this.likes}}{{each}}
+                </li>
+            </div>
+        </div>

@@ -12,12 +12,11 @@
                 display: inline-block;
                 margin-left: 10px;
             }
-            
-            .dropdown {
+            /*.dropdown {
                 position: absolute;
-                /*margin-left: 200px;*/
-                display: inline-block;
-            }
+                /*margin-left: 200px;
+             
+            }*/
             
             html {
                 height: 100%;
@@ -32,7 +31,6 @@
             
             .artist {
                 display: inline-block;
-                visibility: hidden;
                 font-size: 20px;
             }
             
@@ -52,6 +50,13 @@
             .ArtistPicture image {
                 width: 100%;
                 height: auto;
+            }
+            
+            #albumsOfSongs {
+                display: inline-block;
+                position: absolute;
+                margin-left: 20px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
             
             #SearchBar {
