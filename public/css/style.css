@@ -35,7 +35,6 @@
             }
             
             .SearchBar {
-                position: relative;
                 margin-top: -35px;
             }
             
@@ -46,8 +45,8 @@
             }
             
             .navbar {
-                position: relative;
-                margin-left: 1000px;
+                position: absolute;
+                margin-left: 80%;
                 width: 200px;
                 height: 75px;
             }
