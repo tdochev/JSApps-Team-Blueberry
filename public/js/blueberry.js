@@ -6,8 +6,11 @@ import toastr from 'toastr';
 import CryptoJS from 'cryptojs';
 import Sammy from 'sammy';
 import * as validator from './utils/validator.js';
-import * as requester from './utils/requester.js';
+import requester from 'requester';
 import HandlebarsTemplate from 'templates';
+import UserController from 'userController';
+
+let userController = new UserController();
 
 var app = Sammy(function() {
 
@@ -29,46 +32,7 @@ var app = Sammy(function() {
     });
 
 
-    this.get('#/signin', function() {
-        var template = new HandlebarsTemplate();
-        template.loadTemplate('signin').then(function(template) {
-            $('#main-container').append(template());
-        }).then(function() {
-            var signInModal = $('#sign-in-modal');
-            signInModal.modal('show');
-            $('#btn-sign-in').on('click', function() {
-                signInModal.modal('show');
-            });
-            $('#sign-in-modal').on('shown.bs.modal', function() {
-                $('#sign-in-form-username').focus();
-            });
-            $('#form-sign-in').on('click', function() {
-                var username = $('#sign-in-form-username').val().toLowerCase();
-                var password = $('#sign-in-form-password').val();
-                var passHash = CryptoJS.SHA1(username + password).toString();
-                var user = {
-                    username: username,
-                    passHash: passHash
-                };
-                //console.log(user);
-                requester.post('/api/auth', {
-                    data: user
-                }).then(function(resp) {
-                    var loggerUser = resp.result.username;
-                    var loggedAuthKey = resp.result.authKey;
-                    localStorage.setItem('user', loggerUser);
-                    localStorage.setItem('userAuthKey', loggedAuthKey);
-                    $('#sign-in-modal').modal('hide');
-                    $('#btn-sign-in').addClass('hidden');
-                    $('#btn-register').addClass('hidden');
-                    $('#btn-logout').removeClass('hidden');
-                    window.location = '#/';
-                    toastr.success(`You have logged in as: ${loggerUser}`);
-
-                });
-            });
-        });
-    });
+    this.get('#/signin', userController.userSignIn());
 
     this.get('#/register', function() {
         // var $registerBtn = $('#btn-register');

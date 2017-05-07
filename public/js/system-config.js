@@ -9,6 +9,11 @@ System.config({
         // App files
         'blueberry': 'js/blueberry.js',
         'templates': 'js/utils/templates.js',
+        'requester': 'js/utils/requester.js',
+
+        //Controllers
+        'userController': 'js/controllers/userController.js',
+
 
         // Templates
         // 'homeTemplate': 'templates/home.handlebars',
