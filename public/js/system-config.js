@@ -10,6 +10,7 @@ System.config({
         'blueberry': 'js/blueberry.js',
         'templates': 'js/utils/templates.js',
         'requester': 'js/utils/requester.js',
+        'validator': 'js/utils/validator.js',
 
         //Controllers
         'userController': 'js/controllers/userController.js',

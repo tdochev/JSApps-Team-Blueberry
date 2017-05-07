@@ -1,15 +1,19 @@
 /* globals $, toastr*/
 import HandlebarsTemplate from 'templates';
-import requester from 'requester';
+import Requester from 'requester';
 import CryptoJS from 'cryptojs';
+import Validator from 'validator';
+import toastr from 'toastr';
 
 var _signInModalCalled = 0;
 var _registerModal = 0;
 
+var requester = new Requester();
+var validator = new Validator();
+
 export default class userController {
 
     userSignIn() {
-        console.log(_signInModalCalled);
         var template = new HandlebarsTemplate();
         template.loadTemplate('signin').then(function(template) {
             if (!_registerModal) {
