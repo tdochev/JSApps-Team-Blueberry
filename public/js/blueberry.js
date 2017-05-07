@@ -32,7 +32,7 @@ var app = Sammy(function() {
     });
 
 
-    this.get('#/signin', userController.userSignIn());
+    this.get('#/signin', userController.userSignIn);
 
     this.get('#/register', function() {
         // var $registerBtn = $('#btn-register');
