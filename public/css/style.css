@@ -19,7 +19,12 @@
                 display: inline-block;
             }
             
+            html {
+                height: 100%;
+            }
+            
             body {
+                min-height: 100%;
                 background-image: url(pic/background.png);
                 background-size: 100% 100%;
                 background-repeat: no-repeat;
@@ -31,7 +36,13 @@
             
             .SearchBar {
                 position: relative;
-                margin-top: -70px;
+                margin-top: -35px;
+            }
+            
+            .jumbotron {
+                background-image: url(pic/up.jpg);
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
             }
             
             .navbar {
