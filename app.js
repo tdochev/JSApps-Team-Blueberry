@@ -15,6 +15,7 @@ const port = process.env.PORT || 3001;
 
 
 
+
 function generateAuthKey(uniquePart) {
     const AUTH_KEY_LENGTH = 60,
         AUTH_KEY_CHARS = 'qwertyuiopasdfghjklzxcvbnmWERTYUIOPASDFGHJKLZXCVBNM';
@@ -27,6 +28,13 @@ function generateAuthKey(uniquePart) {
     return authKey;
 }
 
+const AUTH_KEY_HEADER_NAME = 'userAuthKey';
+app.use(function(req, res, next) {
+    var authKey = req.headers[AUTH_KEY_HEADER_NAME];
+    var user = data.getUserByAuthKey(authKey);
+    req.user = user || null;
+    next();
+});
 
 app.get('/api/users', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
