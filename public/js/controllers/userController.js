@@ -58,7 +58,7 @@ export default class userController {
         $('#btn-logout').addClass('hidden');
         localStorage.removeItem('user');
         localStorage.removeItem('userAuthKey');
-        toastr.success('You have successfuly loged out.')
+        toastr.success('You have successfuly loged out.');
         window.location = '#/';
     }
 
@@ -72,6 +72,9 @@ export default class userController {
         }).then(function() {
             var registerModal = $('#register-modal');
             registerModal.modal('show');
+            $('#btn-register').on('click', function() {
+                registerModal.modal('show');
+            });
             var $registerBtn = $('#form-register-btn');
             $registerBtn.on('click', function() {
                 var username = $('#register-form-username').val().toLowerCase();
@@ -83,7 +86,7 @@ export default class userController {
 
                 var reqUser = {
                     username: username,
-                    passHash: passHash
+                    passHash: passHash,
                 };
 
                 return requester.put('api/users', {
@@ -91,7 +94,6 @@ export default class userController {
                     })
                     .then(function(resp) {
                         var user = resp.result;
-                        //move messages to a module
                         toastr.success(`User ${user.username} successfuly created.`);
                         return {
                             username: user.username
