@@ -45,8 +45,6 @@ app.get('/api/users', (req, res) => {
 
 app.get('/api/artists', (req, res) => {
     var user = req.user;
-    console.log("user:");
-    console.log(req.user);
     if (!user) {
         res.status(401)
             .json('Not authorized User');
