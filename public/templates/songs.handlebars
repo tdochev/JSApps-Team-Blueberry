@@ -4,7 +4,9 @@
                 <li>
                     {{SongList.song.isThisASingle}}
                     {{each SongList.song}}
-                    <ul class="inThisAlbum">{{this}} Likes: {{this.likes}}{{each}}
+                    <ul class="inThisAlbum">{{this}} Likes: {{this.likes}}
+                       <div class="like/dislike"> <img src="/public/css/pic/like.jpg"> <img src="/public/css/pic/like.jpg"></div>
+                        {{/each}}
                 </li>
             </div>
         </div>
