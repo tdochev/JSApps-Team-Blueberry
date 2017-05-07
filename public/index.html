@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JSApps-Team-Blueberry</title>
+    <title>JSApps-Team-Blueberry Music Book</title>
+    <link rel="stylesheet" href="css/style.css">
     <link href="/libs/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="/libs/toastr/build/toastr.css" rel="stylesheet">
 </head>
@@ -29,8 +30,24 @@
                     <a id="btn-logout" class="btn btn-danger hidden" href='#/logout'>Logout</a>
                 </form>
             </div>
+
             <!--/.navbar-collapse -->
+
+        </div>
+
     </nav>
+    <div class="SearchBar">
+        <input id="SearchBar" type="text">
+        <div class="dropdown">
+            <button class="dropbtn">Search</button>
+            <div class="dropdown-content">
+                <a href="#">By Album</a>
+                <a href="#">By Artist</a>
+                <a href="#">By Song</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <main id="main-container">
         <div class="jumbotron">
