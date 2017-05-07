@@ -27,3 +27,10 @@ var app = Sammy(function() {
 
 // start the application
 app.run('#/');
+
+if (userController.hasUser()) {
+    $('#btn-sign-in').addClass('hidden');
+    $('#btn-register').addClass('hidden');
+} else {
+    $('#btn-logout').addClass('hidden');
+}

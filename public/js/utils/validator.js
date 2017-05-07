@@ -3,11 +3,12 @@ import toastr from 'toastr';
 
 export default class Validator {
 
-    validateLen(x, nameOfValidateValue, len) {
+    validateLen(x, len) {
         'use strict';
         if (x.length < len) {
             //move to constant
-            toastr.error(`${nameOfValidateValue} should be at least ${len} signs`);
+            return false;
         }
+        return true;
     }
 }

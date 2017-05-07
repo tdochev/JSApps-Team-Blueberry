@@ -5,8 +5,11 @@ import CryptoJS from 'cryptojs';
 import Validator from 'validator';
 import toastr from 'toastr';
 
-var _signInModalCalled = 0;
-var _registerModal = 0;
+var signInModalCalled = 0;
+var registerModal = 0;
+
+var PASSWORD_MIN_LEN = 6;
+var USERNAME_MIN_LEN = 6;
 
 var requester = new Requester();
 var validator = new Validator();
@@ -16,9 +19,9 @@ export default class userController {
     userSignIn() {
         var template = new HandlebarsTemplate();
         template.loadTemplate('signin').then(function(template) {
-            if (!_registerModal) {
+            if (!registerModal) {
                 $('#main-container').append(template());
-                _registerModal += 1;
+                registerModal += 1;
             }
         }).then(function() {
             $('#sign-in-modal').on('shown.bs.modal', function() {
@@ -69,9 +72,9 @@ export default class userController {
     userRegister() {
         var template = new HandlebarsTemplate();
         template.loadTemplate('register').then(function(template) {
-            if (!_signInModalCalled) {
+            if (!signInModalCalled) {
                 $('#main-container').append(template());
-                _signInModalCalled += 1;
+                signInModalCalled += 1;
             }
         }).then(function() {
             var registerModal = $('#register-modal');
@@ -85,8 +88,15 @@ export default class userController {
                 var password = $('#register-form-password').val();
                 var passHash = CryptoJS.SHA1(username + password).toString();
 
-                validator.validateLen(username, 'username', 3);
-                validator.validateLen(password, 'password', 6);
+                if (!validator.validateLen(username, USERNAME_MIN_LEN)) {
+                    toastr.error(`Username should be at least ${USERNAME_MIN_LEN} signs`);
+                    return;
+                }
+
+                if (!validator.validateLen(password, PASSWORD_MIN_LEN)) {
+                    toastr.error(`Password should be at least ${PASSWORD_MIN_LEN} signs`);
+                    return;
+                }
 
                 var reqUser = {
                     username: username,
@@ -97,6 +107,8 @@ export default class userController {
                         data: reqUser
                     })
                     .then(function(resp) {
+                        registerModal.modal('hide');
+                        window.location = '#/';
                         var user = resp.result;
                         toastr.success(`User ${user.username} successfuly created.`);
                         return {
@@ -107,5 +119,10 @@ export default class userController {
                     });
             });
         });
+    }
+
+    hasUser() {
+        return !!localStorage.getItem('user') &&
+            !!localStorage.getItem('userAuthKey');
     }
 }
