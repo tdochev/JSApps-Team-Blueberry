@@ -45,14 +45,11 @@ module.exports = function() {
     }
 
     function getUserByUsername(username) {
-        return new Promise((resolve, reject) => {
-            MongoClient.connect(dbURI.toString()).then(db => {
-                db.collection('users').find({
-                    username: username
-                }).toArray((error, rows) => {
-                    resolve(rows[0]);
-                    reject(error);
-                });
+        MongoClient.connect(dbURI.toString()).then(db => {
+            db.collection('users').find({
+                username: username
+            }).toArray((error, rows) => {
+                return (rows[0]);
             });
         });
     }
@@ -70,10 +67,26 @@ module.exports = function() {
         });
     }
 
+    function getAllArtists() {
+        return new Promise((resolve, reject) => {
+            MongoClient.connect(dbURI.toString()).then(db => {
+                db.collection('artists').find({}).toArray((error, rows) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        db.close();
+                        resolve(rows);
+                    }
+                });
+            });
+        });
+    }
+
     return {
         getAllUsers: getAllUsers,
         addUser: addUser,
         getUserByUsername: getUserByUsername,
-        getUserByAuthKey: getUserByAuthKey
+        getUserByAuthKey: getUserByAuthKey,
+        getAllArtists: getAllArtists
     };
 };

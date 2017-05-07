@@ -13,8 +13,13 @@ app.use(bodyParser.json());
 
 const port = process.env.PORT || 3001;
 
-
-
+app.use((req, res, next) => {
+    var authKey = req.headers['userauthkey'];
+    let user = data.getUserByAuthKey(authKey).then((value) => {
+        req.user = value;
+        next();
+    });
+});
 
 function generateAuthKey(uniquePart) {
     const AUTH_KEY_LENGTH = 60,
@@ -28,17 +33,25 @@ function generateAuthKey(uniquePart) {
     return authKey;
 }
 
-const AUTH_KEY_HEADER_NAME = 'userAuthKey';
-app.use(function(req, res, next) {
-    var authKey = req.headers[AUTH_KEY_HEADER_NAME];
-    var user = data.getUserByAuthKey(authKey);
-    req.user = user || null;
-    next();
-});
 
 app.get('/api/users', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     data.getAllUsers().then(value => {
+        res.send(JSON.stringify(value));
+    }).catch(err => {
+        console.log(err);
+    });
+});
+
+app.get('/api/artists', (req, res) => {
+    var user = req.user;
+    if (!user) {
+        res.status(401)
+            .json('Not authorized User');
+        return;
+    }
+    res.setHeader('Content-Type', 'application/json');
+    data.getAllArtists().then(value => {
         res.send(JSON.stringify(value));
     }).catch(err => {
         console.log(err);

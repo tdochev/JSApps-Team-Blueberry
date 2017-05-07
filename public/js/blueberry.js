@@ -2,15 +2,12 @@
 
 import 'jquery';
 import 'bootstrap';
-import toastr from 'toastr';
-import CryptoJS from 'cryptojs';
 import Sammy from 'sammy';
-import Validator from 'validator';
-import Requester from 'requester';
-import HandlebarsTemplate from 'templates';
 import UserController from 'userController';
+import ArtistsController from 'artistsController';
 
 let userController = new UserController();
+let artistsController = new ArtistsController();
 
 var app = Sammy(function() {
     'use strict';
@@ -23,9 +20,7 @@ var app = Sammy(function() {
 
     this.get('#/register', userController.userRegister);
 
-    this.get('#/artists', function() {
-        console.log('Artist controller should go here!');
-    });
+    this.get('#/artists', artistsController.getArtists);
 
     this.get('#/albums', function() {
         console.log('Albums controller should go here!');

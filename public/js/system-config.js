@@ -14,7 +14,7 @@ System.config({
 
         //Controllers
         'userController': 'js/controllers/userController.js',
-
+        'artistsController': 'js/controllers/artistsController.js',
 
         // Templates
         // 'homeTemplate': 'templates/home.handlebars',
