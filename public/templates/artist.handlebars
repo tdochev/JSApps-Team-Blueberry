@@ -1,0 +1,14 @@
+    <div class="artists">
+                <p>{{artists.name}}</p>
+                <p class="band">{{artist.bandHeIsPartOf}}</p>
+                <div class="ArtistPicture">
+                    <img src="/pic/test.png">
+
+                </div>
+                <div id="ArtistSongs">
+                    <li>
+                        {{each artist.albums}}
+                        <ul>{{this}}</ul>{{each}}
+                    </li>
+                </div>
+            </div>
