@@ -8,6 +8,7 @@ System.config({
 
         // App files
         'blueberry': 'js/blueberry.js',
+        'templates': 'js/utils/templates.js',
 
         // Templates
         // 'homeTemplate': 'templates/home.handlebars',
