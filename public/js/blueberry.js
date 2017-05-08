@@ -24,9 +24,7 @@ var app = Sammy(function() {
 
     this.get('#/songs', songController.getAllSongs);
 
-    this.get('#/albums', function() {
-        console.log('Albums controller should go here!');
-    });
+    this.get('#/albums', albumsController.getAlbum);
 });
 
 // start the application

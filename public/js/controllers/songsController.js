@@ -1,40 +1,27 @@
-'use strict'
+/* globals $, localStorage */
 
-var listsOfSongs = [];
-class Song {
-    constructor(artist, album, likes, isThisASingle) {
-        this._artist = artist;
-        this._album = album;
-        this._isThisASingle = isThisASingle;
-        this.likes = 0;
-        listsOfSongs.push(this);
-    }
-    get artist() {
-        return this._artist;
-    }
-    get album() {
-        return this._album;
-    }
-    get likes() {
-        return this._likes;
-    }
-    get isThisASingle() {
-        return this._isThisASingle;
-    }
+import Requester from 'requester';
+import HandlebarsTemplate from 'templates';
+import toastr from 'toastr';;
 
-    Like() {
-        this._likes += 1;
-    }
-    Dislike() {
-        this._likes -= 1;
-    }
-}
+var requester = new Requester();
 
-export default class SongList {
-    constructor() {
-        this.list = listsOfSongs;
-    }
-    get list() {
-        return JSON.stringify(this.list);
+export default class songController {
+    getAllSongs() {
+        var options = {
+            headers: {
+                'userAuthKey': localStorage.getItem('userAuthKey')
+            }
+        };
+
+        requester.get('/api/artists', options).then(function(resp) {
+            console.log(resp);
+            var template = new HandlebarsTemplate();
+            template.loadTemplate('songs').then(function(template) {
+                $('#main-container').append(template(resp));
+            });
+        }).catch(function err() {
+            console.log(err);
+        });
     }
 }

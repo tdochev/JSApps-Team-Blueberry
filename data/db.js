@@ -88,7 +88,7 @@ module.exports = function() {
     function getAllSongs() {
         return new Promise((resolve, reject) => {
             MongoClient.connect(dbURI.toString()).then(db => {
-                db.collection('songs').find({}).toArray((error, rows) => {
+                db.collection('artists').find({}).toArray((error, rows) => {
                     if (error) {
                         reject(error);
                     } else {
@@ -103,7 +103,7 @@ module.exports = function() {
     function getAllAlbums() {
         return new Promise((resolve, reject) => {
             MongoClient.connect(dbURI.toString()).then(db => {
-                db.collection('albums').find({}).toArray((error, rows) => {
+                db.collection('artists').find({}).toArray((error, rows) => {
                     if (error) {
                         reject(error);
                     } else {

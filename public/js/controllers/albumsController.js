@@ -2,6 +2,7 @@
 
 import Requester from 'requester';
 import HandlebarsTemplate from 'templates';
+import toastr from 'toastr';
 
 var requester = new Requester();
 
@@ -14,7 +15,7 @@ export default class albumsController {
             }
         };
 
-        requester.get('/api/albums', options).then(function(resp) {
+        requester.get('/api/artists', options).then(function(resp) {
             console.log(resp);
             var template = new HandlebarsTemplate();
             template.loadTemplate('albums').then(function(template) {
