@@ -1,0 +1,13 @@
+{
+    "name": "Michael Jackson",
+    "bandHeIsPartOf": "",
+    "albums": [{
+            "title": "Got to Be There",
+            "songs": []
+        },
+        {
+            "title": "Ben",
+            "songs": []
+        }
+    ]
+}

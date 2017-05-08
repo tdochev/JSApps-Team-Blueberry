@@ -45,11 +45,14 @@ module.exports = function() {
     }
 
     function getUserByUsername(username) {
-        MongoClient.connect(dbURI.toString()).then(db => {
-            db.collection('users').find({
-                username: username
-            }).toArray((error, rows) => {
-                return (rows[0]);
+        return new Promise((resolve, reject) => {
+            MongoClient.connect(dbURI.toString()).then(db => {
+                db.collection('users').find({
+                    username: username
+                }).toArray((error, rows) => {
+                    resolve(rows[0]);
+                    reject(error);
+                });
             });
         });
     }

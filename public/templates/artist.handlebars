@@ -1,14 +1,18 @@
-    <div class="artists">
-                <p>{{artists.name}}</p>
-                <p class="band">{{artist.bandHeIsPartOf}}</p>
-                <div class="ArtistPicture">
-                    <img src="/pic/test.png">
+{{#each this}}
+<div class="artists">
+    <p>{{this.name}}</p>
+    <p class="band">{{bandHeIsPartOf}}</p>
+    <div class="ArtistPicture">
+        <img src="/pic/test.png">
 
-                </div>
-                <div id="ArtistSongs">
-                    <li>
-                        {{each artist.albums}}
-                        <ul>{{this}}</ul>{{/each}}
-                    </li>
-                </div>
-            </div>
+    </div>
+
+    <div id="ArtistSongs">
+        <ul class="list-group">
+            {{#each albums}}
+            <li class="list-group-item">{{this.title}}</li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+{{/each}}
