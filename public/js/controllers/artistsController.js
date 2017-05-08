@@ -18,6 +18,7 @@ export default class userController {
             console.log(resp);
             var template = new HandlebarsTemplate();
             template.loadTemplate('artist').then(function(template) {
+                $('#main-container').empty();
                 $('#main-container').append(template(resp));
             });
         }).catch(function err() {

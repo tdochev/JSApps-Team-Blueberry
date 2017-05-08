@@ -1,6 +1,6 @@
 {{#each this}}
 <div class="artists">
-    <p>{{this.name}}</p>
+    <p>{{this.name}} {{albums.length}} albums</p>
     <p class="band">{{bandHeIsPartOf}}</p>
     <div class="ArtistPicture">
         <img src="/pic/test.png">
@@ -10,7 +10,7 @@
     <div id="ArtistSongs">
         <ul class="list-group">
             {{#each albums}}
-            <li class="list-group-item">{{this.title}}</li>
+            <li class="list-group-item">{{this.title}} ({{this.year}})</li>
             {{/each}}
         </ul>
     </div>

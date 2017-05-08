@@ -1,13 +1,25 @@
-{
-    "name": "Michael Jackson",
-    "bandHeIsPartOf": "",
-    "albums": [{
-            "title": "Got to Be There",
+[{
+        "name": "Michael Jackson",
+        "bandHeIsPartOf": "",
+        "albums": [{
+                "title": "Got to Be There",
+                "year": 1973,
+                "songs": []
+            },
+            {
+                "title": "Ben",
+                "year": 1973,
+                "songs": []
+            }
+        ]
+    },
+    {
+        "name": "Betles",
+        "bandHeIsPartOf": "",
+        "albums": [{
+            "title": "My Bonnie",
+            "year": 1962,
             "songs": []
-        },
-        {
-            "title": "Ben",
-            "songs": []
-        }
-    ]
-}
+        }]
+    }
+]
