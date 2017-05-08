@@ -58,6 +58,37 @@ app.get('/api/artists', (req, res) => {
     });
 });
 
+app.get('/api/songs', (req, res) => {
+    var user = req.user;
+    if (!user) {
+        res.status(401)
+            .json('Not authorized User');
+        return;
+    }
+    res.setHeader('Content-Type', 'application/json');
+    data.getAllSongs().then(value => {
+        res.send(JSON.stringify(value));
+    }).catch(err => {
+        console.log(err);
+    });
+});
+
+app.get('/api/albums', (req, res) => {
+    var user = req.user;
+    if (!user) {
+        res.status(401)
+            .json('Not authorized User');
+        return;
+    }
+    res.setHeader('Content-Type', 'application/json');
+    data.getAllAlbums().then(value => {
+        res.send(JSON.stringify(value));
+    }).catch(err => {
+        console.log(err);
+    });
+});
+
+
 app.put('/api/users', (req, res) => {
     let user = req.body;
     user.authKey = generateAuthKey(user.username);

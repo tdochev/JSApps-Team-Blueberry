@@ -22,14 +22,11 @@ var app = Sammy(function() {
 
     this.get('#/artists', artistsController.getArtists);
 
+    this.get('#/songs', songController.getAllSongs);
+
     this.get('#/albums', function() {
         console.log('Albums controller should go here!');
     });
-
-    this.get('#/songs', function() {
-        console.log('Songs controller should go here!');
-    });
-
 });
 
 // start the application

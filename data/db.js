@@ -85,11 +85,42 @@ module.exports = function() {
         });
     }
 
+    function getAllSongs() {
+        return new Promise((resolve, reject) => {
+            MongoClient.connect(dbURI.toString()).then(db => {
+                db.collection('songs').find({}).toArray((error, rows) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        db.close();
+                        resolve(rows);
+                    }
+                });
+            });
+        });
+    }
+
+    function getAllAlbums() {
+        return new Promise((resolve, reject) => {
+            MongoClient.connect(dbURI.toString()).then(db => {
+                db.collection('albums').find({}).toArray((error, rows) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        db.close();
+                        resolve(rows);
+                    }
+                });
+            });
+        });
+    }
     return {
         getAllUsers: getAllUsers,
         addUser: addUser,
         getUserByUsername: getUserByUsername,
         getUserByAuthKey: getUserByAuthKey,
-        getAllArtists: getAllArtists
+        getAllArtists: getAllArtists,
+        getAllSongs: getAllSongs,
+        getAllAlbums: getAllAlbums
     };
 };
