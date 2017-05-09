@@ -2,6 +2,7 @@
 
 import Requester from 'requester';
 import HandlebarsTemplate from 'templates';
+import toastr from 'toastr';
 
 var requester = new Requester();
 
