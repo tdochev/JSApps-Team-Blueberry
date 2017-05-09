@@ -1,0 +1,11 @@
+  {{#each this}}
+   <div class="albums">
+            {{album}}
+            <div id="songsOfAlbum">
+                <li>
+                    {{each album.song}}
+                     {{/each}}
+                </li>
+            </div>
+        </div>
+        {{/each}}

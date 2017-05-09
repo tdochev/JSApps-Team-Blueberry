@@ -1,0 +1,34 @@
+[{
+        "name": "Michael Jackson",
+        "bandHeIsPartOf": "",
+        "albums": [{
+                "title": "Got to Be There",
+                "year": 1973,
+                "songs": ["First",
+                    "Second",
+                    "Third"
+                ]
+            },
+            {
+                "title": "Ben",
+                "year": 1973,
+                "songs": ["Ain't No Sunshine",
+                    "I Wanna Be Where You Are",
+                    "Girl Don't Take Your Love from Me",
+                    "In Our Small Way",
+                    "Got to Be There",
+                    "Rockin' Robin"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Betles",
+        "bandHeIsPartOf": "",
+        "albums": [{
+            "title": "My Bonnie",
+            "year": 1962,
+            "songs": []
+        }]
+    }
+]
