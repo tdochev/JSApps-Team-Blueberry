@@ -11,7 +11,7 @@ Team Work for JavaScript Application Course (April 2017)
         <li>HTML</li>
         <li>CSS</li>
         <ul>JavaScript Libraries
-        <li>Boostrap</li>
+        <li>Bootstrap</li>
         <li>SystemJS</li>
         <li>jQuery</li>
         <li>Handlebars</li>
@@ -21,6 +21,7 @@ Team Work for JavaScript Application Course (April 2017)
 </ul>
 </ul>
  <a href="https://jsapps-team-blueberry.herokuapp.com">Live Demo!</a> 
+<br />
 </html>
 
 Name | TelerikAcademy user | GitHub user
