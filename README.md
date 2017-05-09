@@ -20,6 +20,7 @@ Team Work for JavaScript Application Course (April 2017)
         <li>CryptoJS</li>
 </ul>
 </ul>
+ <a href="https://jsapps-team-blueberry.herokuapp.com">Live Demo!</a> 
 </html>
 
 Name | TelerikAcademy user | GitHub user
