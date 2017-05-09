@@ -22,8 +22,8 @@ export default class userController {
                 $('#main-container').empty();
                 $('#main-container').append(template(resp));
             });
-        }).catch(function err() {
-            console.log(err);
+        }).catch(function(reason) {
+            toastr.error(reason.statusText);
         });
     }
 }
