@@ -5,9 +5,11 @@ import 'bootstrap';
 import Sammy from 'sammy';
 import UserController from 'userController';
 import ArtistsController from 'artistsController';
+import SongsController from 'songsController';
 
 let userController = new UserController();
 let artistsController = new ArtistsController();
+let songsController = new SongsController();
 
 var app = Sammy(function() {
     'use strict';
@@ -22,7 +24,7 @@ var app = Sammy(function() {
 
     this.get('#/artists', artistsController.getArtists);
 
-    this.get('#/songs', songController.getAllSongs);
+    this.get('#/songs', songsController.getAllSongs);
 
     this.get('#/albums', albumsController.getAlbum);
 });
